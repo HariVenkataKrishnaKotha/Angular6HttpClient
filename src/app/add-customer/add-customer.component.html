@@ -1,0 +1,42 @@
+<head>
+  <link src="src/app/add-customer/validate.js" type = "text/javascript">
+</head>
+<body>
+<h3 align="center">Add Customer</h3>
+<div [hidden]="submitted">
+    <form #addCustomerForm="ngForm">
+     <table align="center"><tr><td>
+        <label for="firstname">First Name:</label></td><td>
+            <uitk-input class="form-control" tkId="firstname" tkPlaceholder="FirstName" 
+            required
+            [(ngModel)]="customer.firstname" name="firstname" #firstname="ngModel" tkType="text"></uitk-input>
+        </td></tr>
+      
+        <tr><td>
+        <label for="lastname">Last Name:</label></td><td>
+        <uitk-input class="form-control" tkId="lastname" tkPlaceholder="LastName"
+        required
+        [(ngModel)]="customer.lastname" name="lastname" #lastname="ngModel" tkType="text" ></uitk-input>
+        </td></tr>
+      
+      <tr><td>
+        <label for="age">Age:</label></td><td>
+        <uitk-input class="form-control" tkId="age" 
+        placeholder="Give Customer's Age"
+        required
+        [(ngModel)]="customer.age" name="age" #age="ngModel" tkPlaceholder="age" type="number"></uitk-input>
+      </td></tr> 
+      
+      <tr><td>
+        <uitk-button align="center" (clickCallback)="goBack()" value="Back" [disabled]=false></uitk-button></td><td>
+        <uitk-button align="center" name="abcd" tkId="abcd" (clickCallback)="addCustomer()" value="Add" [disabled]="!addCustomerForm.form.valid"></uitk-button>
+      </td></tr></table>
+    </form>
+</div> 
+<div [hidden]="!submitted">
+  <p align="center">Submitted Successfully! -> <span class="badge badge-light">{{customer.firstname}}  {{customer.lastname}}</span></p>
+	<div align="center">
+      <uitk-button align="center" (clickCallback)="goBack()" value="Back" [enableDefault]=true [disabled]=false></uitk-button>
+      <uitk-button align="center" (clickCallback)="newCustomer(); addCustomerForm.reset()" value="Continue" [enableDefault]=true [disabled]=false></uitk-button>
+  </div>
+</div></body>

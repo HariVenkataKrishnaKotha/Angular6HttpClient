@@ -1,0 +1,24 @@
+<head>
+    <link rel="stylesheet" href="src/app/search/search.component.css">
+</head>
+<div align="right">
+<form>
+    <table><tr><td colspan="2">
+      <label for="firstname.value">Search using firstname</label></td></tr><tr><td>
+      <input type="text" class="form-control" required #firstname></td><td>
+     
+      <button type="button" (click)="getCustomerFname(firstname.value);">search</button></td></tr></table>
+</form></div>
+<h3 align="center">Resulting customers of the search</h3>
+      <table id="myTable" border="1" cellpadding="10" align="center">
+        <tr class="header">
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Operation</th>
+        </tr>
+        <tr class="header" *ngFor="let cust of customers">
+          <td>{{ cust.firstname }}</td>
+          <td>{{ cust.lastname }}</td> 
+          <td><a [routerLink]="['/customers', cust.id]" style="color:black"><uitk-button value="Edit"></uitk-button></a></td>
+        </tr>
+      </table>

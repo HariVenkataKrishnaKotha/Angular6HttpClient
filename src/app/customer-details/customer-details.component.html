@@ -1,0 +1,54 @@
+
+<h4 align="center">{{customer.firstname}} {{customer.lastname}}</h4>
+<div [hidden]="submitted">
+    <form  #detailCustomerForm="ngForm" >
+      <table align="center">
+        <tr><td>
+        <label for="firstname">First Name:</label></td><td colspan="2">
+            <uitk-input class="form-control" tkId="firstname" placeholder="Give Customer's FirstName" 
+            required
+            [(ngModel)]="customer.firstname" name="firstname" #firstname="ngModel" tkType="text"></uitk-input></td></tr>
+        <!--<div [hidden]="firstname.valid || firstname.pristine"
+             class="alert alert-danger">
+            First Name is required
+        </div>-->
+      
+      
+      
+        <tr><td>
+        <label for="lastname">Last Name:</label></td><td colspan="2">
+            <uitk-input class="form-control" tkId="lastname" placeholder="Give Customer's LastName"
+            required
+            [(ngModel)]="customer.lastname" name="lastname" #lastname="ngModel" tkType="text"></uitk-input></td></tr>
+        <!--<div [hidden]="lastname.valid || lastname.pristine"
+             class="alert alert-danger">
+            Last Name is required
+        </div>-->
+     
+      
+      <tr><td>
+        <label for="age">Age:</label></td><td colspan="2">
+            <uitk-input class="form-control" tkId="age" 
+            placeholder="Give Customer's Age"
+            required
+            [(ngModel)]="customer.age" name="age" #age="ngModel" tkType="number" tkmin="10" tkmax="50"></uitk-input></td></tr>
+        <!--<div [hidden]="age.valid || age.pristine"
+             class="alert alert-danger">
+            Age is required
+        </div>-->
+      
+ 
+      <tr><td>
+        <uitk-button (clickCallback)="goBack()" value="Back" [enableDefault]=true [disabled]=false></uitk-button></td><td>
+        <uitk-button (clickCallback)="update()" value="Update" [enableDefault]=true [disabled]=false></uitk-button></td><td>
+            <uitk-button (clickCallback)="delete()" value="Delete" [enableDefault]=true [disabled]=false></uitk-button></td></tr>
+	    </table>
+    </form>
+</div>
+<table align="center"> 
+<div [hidden]="!submitted">
+    <p align="center">{{message}}</p>
+    <div class="btn-group btn-group-sm" align="center">
+      <uitk-button align="center" (click)="goBack()" value="Back" [enableDefault]=true [disabled]=false routerLinkActive="active"></uitk-button>
+    </div>
+</div></table>
